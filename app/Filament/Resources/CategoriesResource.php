@@ -19,7 +19,7 @@ class CategoriesResource extends Resource
 {
     protected static ?string $model = Categories::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-tag';
 
     public static function form(Form $form): Form
     {
@@ -28,10 +28,7 @@ class CategoriesResource extends Resource
                 TextInput::make('name')
                 ->required(),
                 TextInput::make('slug')
-                ->required()
-                ->disabled()
-                ->unique(ignoreRecord: true)
-                ->dehydrated(),
+                ->required(),
             ]);
     }
 

@@ -24,17 +24,17 @@ class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                // Select::make('category_id')
-                // ->label('Category')
-                // ->relationship('category', 'name')
-                // ->searchable()
-                // ->nullable(),
+                Select::make('category_id')
+                ->label('Category')
+                ->relationship('category', 'name')
+                ->searchable()
+                ->nullable(),
                 
                 TextInput::make('title')
                 ->label('Judul'),
