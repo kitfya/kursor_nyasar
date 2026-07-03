@@ -21,9 +21,9 @@ jobs:
         php-version: '8.4' # Sesuaikan dengan versi PHP di hostingmu
         extensions: mbstring, xml, ctype, iconv, intl
 
-    - name: Install Dependencies
-      run: |
-        composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader
+    # - name: Install Dependencies
+    #   run: |
+    #     composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader
 
     # -------------------------------------------------------------
     # STEP 1: Deploy Core Laravel ke folder 'backend' di dalam subdomain
