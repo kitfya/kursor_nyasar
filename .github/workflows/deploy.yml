@@ -1,0 +1,52 @@
+name: Deploy Laravel to Shared Hosting
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  laravel-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2' # Sesuaikan dengan versi PHP di hostingmu
+        extensions: mbstring, xml, ctype, iconv, intl
+
+    - name: Install Dependencies
+      run: |
+        composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader
+
+    # -------------------------------------------------------------
+    # STEP 1: Deploy Core Laravel ke folder 'backend' di dalam subdomain
+    # -------------------------------------------------------------
+    - name: Deploy Backend Core
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }} # kitfya@kursor-nyasar.kitfya.web.id
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
+        server-dir: ./backend/ # Akan terbuat di dalam folder subdomain
+        excludes: |
+          **/.git*
+          **/node_modules/**
+          **/tests/**
+          public/**
+
+    # -------------------------------------------------------------
+    # STEP 2: Deploy isi folder 'public' langsung ke root FTP (Subdomain)
+    # -------------------------------------------------------------
+    - name: Deploy Public to Subdomain Folder
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./public/
+        server-dir: ./ # Langsung ditaruh di root FTP karena FTP-mu sudah mengarah ke subdomain
