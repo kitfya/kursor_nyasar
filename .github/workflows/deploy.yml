@@ -33,7 +33,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./
         server-dir: ./backend/kursor_nyasar/ # Akan terbuat di dalam folder subdomain
-        excludes: |
+        exclude: |
           **/.git*
           **/node_modules/**
           **/tests/**
