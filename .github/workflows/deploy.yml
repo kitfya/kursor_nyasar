@@ -36,8 +36,9 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./
         server-dir: ./backend/kursor_nyasar/ # Akan terbuat di dalam folder subdomain
-        timeout: 30000            # Tambahkan timeout 1 menit agar tidak gampang putus
+        timeout: 60000            # Tambahkan timeout 1 menit agar tidak gampang putus
         dangerous-clean-slate: false
+        state-name: backend-deploy.json
         exclude: |
           **/.git*
           **/node_modules/**
@@ -56,7 +57,8 @@ jobs:
         local-dir: ./public/
         server-dir: ./kursor-nyasar.kitfya.web.id/ # Langsung ditaruh di root FTP karena FTP-mu sudah mengarah ke subdomain
         port: 21
-        timeout: 30000            # Tambahkan timeout 1 menit agar tidak gampang putus
+        timeout: 60000            # Tambahkan timeout 1 menit agar tidak gampang putus
         dangerous-clean-slate: false
+        state-name: public-deploy.json
         exclude: |
           **/.git/**
