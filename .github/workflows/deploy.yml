@@ -32,7 +32,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }} # kitfya@kursor-nyasar.kitfya.web.id
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./
-        server-dir: ./backend/ # Akan terbuat di dalam folder subdomain
+        server-dir: ./backend/kursor_nyasar/ # Akan terbuat di dalam folder subdomain
         excludes: |
           **/.git*
           **/node_modules/**
