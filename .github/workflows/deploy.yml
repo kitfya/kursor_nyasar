@@ -49,4 +49,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./public/
-        server-dir: ./ # Langsung ditaruh di root FTP karena FTP-mu sudah mengarah ke subdomain
+        server-dir: ./kursor-nyasar.kitfya.web.id # Langsung ditaruh di root FTP karena FTP-mu sudah mengarah ke subdomain
