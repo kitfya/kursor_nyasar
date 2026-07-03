@@ -53,3 +53,6 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./public/
         server-dir: ./kursor-nyasar.kitfya.web.id # Langsung ditaruh di root FTP karena FTP-mu sudah mengarah ke subdomain
+        port: 21
+        exclude: |
+          **/.git/**
